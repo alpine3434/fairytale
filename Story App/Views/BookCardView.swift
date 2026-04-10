@@ -2,9 +2,9 @@ import SwiftUI
 
 struct BookCardView: View {
     let book: Book
-    @ObservedObject private var settings = AppSettings.shared
-    @ObservedObject private var progress = UserProgress.shared
-    @ObservedObject private var purchases = PurchaseManager.shared
+    var settings = AppSettings.shared
+    var progress = UserProgress.shared
+    var purchases = PurchaseManager.shared
 
     var isLocked: Bool { !purchases.canRead(book) }
 

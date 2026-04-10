@@ -1,8 +1,8 @@
 import Foundation
 import SwiftUI
-import Combine
+import Observation
 
-enum AppLanguage: String, CaseIterable, Codable {
+enum AppLanguage: String, CaseIterable, Codable, Sendable {
     case english = "english"
     case turkish = "turkish"
 
@@ -26,39 +26,31 @@ enum AppLanguage: String, CaseIterable, Codable {
     }
 }
 
-class AppSettings: ObservableObject {
+@Observable
+final class AppSettings {
     static let shared = AppSettings()
 
-    @Published var language: AppLanguage {
+    var language: AppLanguage         = AppLanguage(rawValue: UserDefaults.standard.string(forKey: "appLanguage") ?? "") ?? .turkish {
         didSet { UserDefaults.standard.set(language.rawValue, forKey: "appLanguage") }
     }
-    @Published var subtitleLanguage: AppLanguage {
+    var subtitleLanguage: AppLanguage = AppLanguage(rawValue: UserDefaults.standard.string(forKey: "subtitleLanguage") ?? "") ?? .english {
         didSet { UserDefaults.standard.set(subtitleLanguage.rawValue, forKey: "subtitleLanguage") }
     }
-    @Published var showSubtitle: Bool {
+    var showSubtitle: Bool            = UserDefaults.standard.object(forKey: "showSubtitle") as? Bool ?? true {
         didSet { UserDefaults.standard.set(showSubtitle, forKey: "showSubtitle") }
     }
-    @Published var readingSpeed: Float {
+    var readingSpeed: Float           = UserDefaults.standard.object(forKey: "readingSpeed") as? Float ?? 0.45 {
         didSet { UserDefaults.standard.set(readingSpeed, forKey: "readingSpeed") }
     }
-    @Published var isDarkMode: Bool {
+    var isDarkMode: Bool              = UserDefaults.standard.object(forKey: "isDarkMode") as? Bool ?? false {
         didSet { UserDefaults.standard.set(isDarkMode, forKey: "isDarkMode") }
     }
-    @Published var parentalControlsEnabled: Bool {
+    var parentalControlsEnabled: Bool = UserDefaults.standard.object(forKey: "parentalControlsEnabled") as? Bool ?? false {
         didSet { UserDefaults.standard.set(parentalControlsEnabled, forKey: "parentalControlsEnabled") }
     }
-    @Published var fontSize: CGFloat {
+    var fontSize: CGFloat             = CGFloat(UserDefaults.standard.object(forKey: "fontSize") as? Double ?? 18) {
         didSet { UserDefaults.standard.set(Double(fontSize), forKey: "fontSize") }
     }
 
-    private init() {
-        let ud = UserDefaults.standard
-        self.language = AppLanguage(rawValue: ud.string(forKey: "appLanguage") ?? "") ?? .turkish
-        self.subtitleLanguage = AppLanguage(rawValue: ud.string(forKey: "subtitleLanguage") ?? "") ?? .english
-        self.showSubtitle = ud.object(forKey: "showSubtitle") as? Bool ?? true
-        self.readingSpeed = ud.object(forKey: "readingSpeed") as? Float ?? 0.45
-        self.isDarkMode = ud.object(forKey: "isDarkMode") as? Bool ?? false
-        self.parentalControlsEnabled = ud.object(forKey: "parentalControlsEnabled") as? Bool ?? false
-        self.fontSize = CGFloat(ud.object(forKey: "fontSize") as? Double ?? 18)
-    }
+    private init() {}
 }

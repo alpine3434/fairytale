@@ -1,24 +1,21 @@
 import SwiftUI
 
 struct AchievementsView: View {
-    @ObservedObject private var progress = UserProgress.shared
-    @ObservedObject private var settings = AppSettings.shared
-
     var body: some View {
+        let progress = UserProgress.shared
+        let settings = AppSettings.shared
         NavigationStack {
             ScrollView {
                 VStack(spacing: 20) {
-                    // Stars header
-                    starsHeader
-
-                    // Stats
-                    statsRow
-
-                    // Achievement grid
+                    starsHeader(progress: progress, settings: settings)
+                    statsRow(progress: progress, settings: settings)
                     LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: 16) {
                         ForEach(Achievement.allCases, id: \.self) { achievement in
-                            AchievementCard(achievement: achievement,
-                                           earned: progress.hasAchievement(achievement))
+                            AchievementCard(
+                                achievement: achievement,
+                                earned: progress.hasAchievement(achievement),
+                                isEnglish: settings.language == .english
+                            )
                         }
                     }
                     .padding(.horizontal)
@@ -30,7 +27,7 @@ struct AchievementsView: View {
         }
     }
 
-    private var starsHeader: some View {
+    private func starsHeader(progress: UserProgress, settings: AppSettings) -> some View {
         VStack(spacing: 8) {
             ZStack {
                 Circle()
@@ -38,8 +35,7 @@ struct AchievementsView: View {
                     .frame(width: 100, height: 100)
                     .shadow(color: .yellow.opacity(0.5), radius: 12, y: 6)
                 VStack(spacing: 2) {
-                    Text("⭐")
-                        .font(.system(size: 32))
+                    Text("⭐").font(.system(size: 32))
                     Text("\(progress.totalStars)")
                         .font(.system(size: 22, weight: .bold))
                         .foregroundColor(.white)
@@ -52,7 +48,7 @@ struct AchievementsView: View {
         .padding()
     }
 
-    private var statsRow: some View {
+    private func statsRow(progress: UserProgress, settings: AppSettings) -> some View {
         HStack(spacing: 0) {
             statItem(settings.language == .english ? "Read" : "Okunan",
                      "\(progress.readBookIDs.count)", "📖")
@@ -84,7 +80,7 @@ struct AchievementsView: View {
 struct AchievementCard: View {
     let achievement: Achievement
     let earned: Bool
-    @ObservedObject private var settings = AppSettings.shared
+    let isEnglish: Bool
 
     var body: some View {
         VStack(spacing: 10) {
@@ -100,22 +96,20 @@ struct AchievementCard: View {
                     .grayscale(earned ? 0 : 1)
             }
 
-            Text(settings.language == .english ? achievement.titleEN : achievement.titleTR)
+            Text(isEnglish ? achievement.titleEN : achievement.titleTR)
                 .font(.system(size: 13, weight: .bold))
                 .multilineTextAlignment(.center)
                 .foregroundColor(earned ? .primary : .secondary)
 
-            Text(settings.language == .english ? achievement.descEN : achievement.descTR)
+            Text(isEnglish ? achievement.descEN : achievement.descTR)
                 .font(.system(size: 10))
                 .multilineTextAlignment(.center)
                 .foregroundColor(.secondary)
                 .lineLimit(2)
 
             HStack(spacing: 2) {
-                Image(systemName: "star.fill")
-                    .font(.system(size: 9))
-                Text("+\(achievement.stars)")
-                    .font(.system(size: 11, weight: .semibold))
+                Image(systemName: "star.fill").font(.system(size: 9))
+                Text("+\(achievement.stars)").font(.system(size: 11, weight: .semibold))
             }
             .foregroundColor(earned ? .yellow : .secondary)
         }

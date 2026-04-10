@@ -1,8 +1,9 @@
 import Foundation
 import SwiftUI
+import Observation
 
 // MARK: - Achievement
-enum Achievement: String, CaseIterable, Codable {
+enum Achievement: String, CaseIterable, Codable, Sendable {
     case firstBook      = "firstBook"
     case fiveBooks      = "fiveBooks"
     case tenBooks       = "tenBooks"
@@ -94,38 +95,34 @@ enum Achievement: String, CaseIterable, Codable {
 }
 
 // MARK: - UserProgress
-class UserProgress: ObservableObject {
+@Observable
+final class UserProgress {
     static let shared = UserProgress()
 
-    @Published var favoriteBookIDs: Set<String> {
-        didSet { save("favoriteBookIDs", Array(favoriteBookIDs)) }
+    var favoriteBookIDs: Set<String> = Set(UserDefaults.standard.stringArray(forKey: "favoriteBookIDs") ?? []) {
+        didSet { UserDefaults.standard.set(Array(favoriteBookIDs), forKey: "favoriteBookIDs") }
     }
-    @Published var readBookIDs: Set<String> {
-        didSet { save("readBookIDs", Array(readBookIDs)) }
+    var readBookIDs: Set<String> = Set(UserDefaults.standard.stringArray(forKey: "readBookIDs") ?? []) {
+        didSet { UserDefaults.standard.set(Array(readBookIDs), forKey: "readBookIDs") }
     }
-    @Published var bookmarks: [String: Int] {
-        didSet { saveDict("bookmarks", bookmarks) }
+    var bookmarks: [String: Int] = {
+        (try? JSONDecoder().decode([String: Int].self,
+            from: UserDefaults.standard.data(forKey: "bookmarks") ?? Data())) ?? [:]
+    }() {
+        didSet {
+            if let data = try? JSONEncoder().encode(bookmarks) {
+                UserDefaults.standard.set(data, forKey: "bookmarks")
+            }
+        }
     }
-    @Published var earnedAchievements: Set<String> {
-        didSet { save("earnedAchievements", Array(earnedAchievements)) }
+    var earnedAchievements: Set<String> = Set(UserDefaults.standard.stringArray(forKey: "earnedAchievements") ?? []) {
+        didSet { UserDefaults.standard.set(Array(earnedAchievements), forKey: "earnedAchievements") }
     }
-    @Published var totalStars: Int {
+    var totalStars: Int = UserDefaults.standard.integer(forKey: "totalStars") {
         didSet { UserDefaults.standard.set(totalStars, forKey: "totalStars") }
     }
-    @Published var lastUnlockedAll: Bool {
-        didSet { UserDefaults.standard.set(lastUnlockedAll, forKey: "lastUnlockedAll") }
-    }
 
-    private init() {
-        let ud = UserDefaults.standard
-        self.favoriteBookIDs = Set(ud.stringArray(forKey: "favoriteBookIDs") ?? [])
-        self.readBookIDs = Set(ud.stringArray(forKey: "readBookIDs") ?? [])
-        self.bookmarks = (try? JSONDecoder().decode([String:Int].self,
-            from: ud.data(forKey: "bookmarks") ?? Data())) ?? [:]
-        self.earnedAchievements = Set(ud.stringArray(forKey: "earnedAchievements") ?? [])
-        self.totalStars = ud.integer(forKey: "totalStars")
-        self.lastUnlockedAll = ud.bool(forKey: "lastUnlockedAll")
-    }
+    private init() {}
 
     // MARK: Helpers
     func isFavorite(_ book: Book) -> Bool { favoriteBookIDs.contains(book.id.uuidString) }
@@ -146,13 +143,8 @@ class UserProgress: ObservableObject {
     }
 
     func isRead(_ book: Book) -> Bool { readBookIDs.contains(book.id.uuidString) }
-
     func bookmark(for book: Book) -> Int { bookmarks[book.id.uuidString] ?? 0 }
-
-    func setBookmark(_ page: Int, for book: Book) {
-        bookmarks[book.id.uuidString] = page
-    }
-
+    func setBookmark(_ page: Int, for book: Book) { bookmarks[book.id.uuidString] = page }
     func hasAchievement(_ a: Achievement) -> Bool { earnedAchievements.contains(a.rawValue) }
 
     func checkAchievements() {
@@ -177,16 +169,6 @@ class UserProgress: ObservableObject {
         if hour >= 21 && !hasAchievement(.nightOwl) {
             earnedAchievements.insert(Achievement.nightOwl.rawValue)
             totalStars += Achievement.nightOwl.stars
-        }
-    }
-
-    // MARK: Persistence
-    private func save(_ key: String, _ value: [String]) {
-        UserDefaults.standard.set(value, forKey: key)
-    }
-    private func saveDict(_ key: String, _ value: [String: Int]) {
-        if let data = try? JSONEncoder().encode(value) {
-            UserDefaults.standard.set(data, forKey: key)
         }
     }
 }

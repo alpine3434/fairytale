@@ -1,32 +1,24 @@
 import Foundation
 import SwiftUI
+import Observation
 
-class PurchaseManager: ObservableObject {
+@Observable
+final class PurchaseManager {
     static let shared = PurchaseManager()
 
-    @Published var isPremium: Bool {
+    var isPremium: Bool = UserDefaults.standard.bool(forKey: "isPremium") {
         didSet { UserDefaults.standard.set(isPremium, forKey: "isPremium") }
     }
 
-    private init() {
-        self.isPremium = UserDefaults.standard.bool(forKey: "isPremium")
-    }
+    private init() {}
 
-    func canRead(_ book: Book) -> Bool {
-        book.isFree || isPremium
-    }
+    func canRead(_ book: Book) -> Bool { book.isFree || isPremium }
 
-    // Simulate purchase (replace with StoreKit in production)
     func purchasePremium() {
         withAnimation { isPremium = true }
     }
 
     func restorePurchases() {
-        // StoreKit restore would go here
-        withAnimation { isPremium = true }
-    }
-
-    func unlockForPreview() {
         withAnimation { isPremium = true }
     }
 }

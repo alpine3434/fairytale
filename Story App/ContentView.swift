@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    @ObservedObject private var settings = AppSettings.shared
+    private var settings = AppSettings.shared
     @State private var showSplash = true
 
     var body: some View {

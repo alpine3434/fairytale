@@ -1,8 +1,8 @@
 import SwiftUI
 
 struct SettingsView: View {
-    @ObservedObject private var settings = AppSettings.shared
-    @ObservedObject private var purchases = PurchaseManager.shared
+    @Bindable private var settings = AppSettings.shared
+    @Bindable private var purchases = PurchaseManager.shared
     @State private var showParentalControl = false
 
     var body: some View {

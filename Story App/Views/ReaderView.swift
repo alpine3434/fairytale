@@ -4,9 +4,9 @@ import AVFoundation
 struct ReaderView: View {
     let book: Book
     @Environment(\.dismiss) private var dismiss
-    @ObservedObject private var settings = AppSettings.shared
-    @ObservedObject private var tts = TTSService.shared
-    @ObservedObject private var progress = UserProgress.shared
+    @Bindable private var settings = AppSettings.shared
+    var tts = TTSService.shared
+    var progress = UserProgress.shared
 
     @State private var currentPage: Int = 0
     @State private var showControls = true

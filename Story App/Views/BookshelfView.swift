@@ -1,8 +1,8 @@
 import SwiftUI
 
 struct BookshelfView: View {
-    @ObservedObject private var settings = AppSettings.shared
-    @ObservedObject private var purchases = PurchaseManager.shared
+    var settings = AppSettings.shared
+    var purchases = PurchaseManager.shared
 
     @State private var searchText = ""
     @State private var selectedCategory: BookCategory? = nil
@@ -168,8 +168,8 @@ struct SearchBar: View {
 // MARK: - Paywall
 struct PaywallView: View {
     @Environment(\.dismiss) private var dismiss
-    @ObservedObject private var purchases = PurchaseManager.shared
-    @ObservedObject private var settings = AppSettings.shared
+    var purchases = PurchaseManager.shared
+    var settings = AppSettings.shared
 
     var body: some View {
         NavigationStack {

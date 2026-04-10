@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct ParentalControlView: View {
-    @ObservedObject private var settings = AppSettings.shared
+    @Bindable private var settings = AppSettings.shared
     @Environment(\.dismiss) private var dismiss
 
     @State private var a = Int.random(in: 2...12)
