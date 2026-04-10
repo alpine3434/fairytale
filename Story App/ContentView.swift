@@ -6,75 +6,48 @@
 //
 
 import SwiftUI
-import SwiftData
 
 struct ContentView: View {
-    @Environment(\.modelContext) private var modelContext
-    @Query private var items: [Item]
+    @ObservedObject private var settings = AppSettings.shared
+    @State private var showSplash = true
 
     var body: some View {
-        NavigationViewWrapper {
-            List {
-                ForEach(items) { item in
-                    NavigationLink {
-                        Text("Item at \(item.timestamp, format: Date.FormatStyle(date: .numeric, time: .standard))")
-                    } label: {
-                        Text(item.timestamp, format: Date.FormatStyle(date: .numeric, time: .standard))
-                    }
-                }
-                .onDelete(perform: deleteItems)
-            }
-#if os(macOS)
-            .navigationSplitViewColumnWidth(min: 180, ideal: 200)
-#endif
-            .toolbar {
-#if os(iOS)
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    EditButton()
-                }
-#endif
-                ToolbarItem {
-                    Button(action: addItem) {
-                        Label("Add Item", systemImage: "plus")
-                    }
-                }
+        ZStack {
+            if showSplash {
+                SplashView(showSplash: $showSplash)
+                    .transition(.opacity)
+            } else {
+                mainTabView
+                    .transition(.opacity)
             }
         }
+        .animation(.easeInOut(duration: 0.5), value: showSplash)
+        .preferredColorScheme(settings.isDarkMode ? .dark : nil)
     }
 
-    private func addItem() {
-        withAnimation {
-            let newItem = Item(timestamp: Date())
-            modelContext.insert(newItem)
-        }
-    }
+    private var mainTabView: some View {
+        TabView {
+            BookshelfView()
+                .tabItem {
+                    Label(settings.language == .english ? "Stories" : "Masallar",
+                          systemImage: "books.vertical.fill")
+                }
 
-    private func deleteItems(offsets: IndexSet) {
-        withAnimation {
-            for index in offsets {
-                modelContext.delete(items[index])
-            }
-        }
-    }
-}
+            AchievementsView()
+                .tabItem {
+                    Label(settings.language == .english ? "Achievements" : "Başarılar",
+                          systemImage: "trophy.fill")
+                }
 
-fileprivate struct NavigationViewWrapper<Content: View>: View {
-    let content: () -> Content
-
-    var body: some View {
-#if os(macOS)
-        NavigationSplitView {
-            content()
-        } detail: {
-            Text("Select an item")
+            SettingsView()
+                .tabItem {
+                    Label(settings.language == .english ? "Settings" : "Ayarlar",
+                          systemImage: "gearshape.fill")
+                }
         }
-#else
-        content()
-#endif
     }
 }
 
 #Preview {
     ContentView()
-        .modelContainer(for: Item.self, inMemory: true)
 }
