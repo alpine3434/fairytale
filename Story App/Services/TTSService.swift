@@ -6,35 +6,25 @@ import Observation
 final class TTSService: NSObject {
     static let shared = TTSService()
 
-    private let synthesizer = AVSpeechSynthesizer()
-    private var delegate: TTSDelegate?
-
+    // Observable properties (UI'ın takip ettiği)
     var isPlaying: Bool = false
     var currentWordRange: NSRange = NSRange(location: 0, length: 0)
     var currentParagraphIndex: Int = 0
 
-    private var paragraphs: [String] = []
-    var paragraphIndex: Int = 0
+    // Observation'dan gizlenecek internal state
+    @ObservationIgnored private let synthesizer = AVSpeechSynthesizer()
+    @ObservationIgnored private var ttsDelegate: TTSDelegate?
+    @ObservationIgnored var paragraphs: [String] = []
+    @ObservationIgnored var paragraphIndex: Int = 0
 
     override private init() {
         super.init()
         let d = TTSDelegate(owner: self)
-        self.delegate = d
+        self.ttsDelegate = d
         synthesizer.delegate = d
-        configureAudioSession()
     }
 
-    private func configureAudioSession() {
-#if os(iOS)
-        do {
-            try AVAudioSession.sharedInstance().setCategory(.playback, mode: .spokenAudio, options: [.duckOthers])
-            try AVAudioSession.sharedInstance().setActive(true)
-        } catch {
-            print("Audio session error: \(error)")
-        }
-#endif
-    }
-
+    // MARK: - Public API
     func speak(paragraphs: [String], language: AppLanguage, speed: Float, startAt: Int = 0) {
         stop()
         self.paragraphs = paragraphs
@@ -56,14 +46,15 @@ final class TTSService: NSObject {
         synthesizer.stopSpeaking(at: .immediate)
         isPlaying = false
         currentWordRange = NSRange(location: 0, length: 0)
-        currentParagraphIndex = 0
     }
 
     func togglePlayPause(paragraphs: [String], language: AppLanguage, speed: Float) {
         if synthesizer.isSpeaking {
             if synthesizer.isPaused { resume() } else { pause() }
         } else {
-            speak(paragraphs: paragraphs, language: language, speed: speed, startAt: paragraphIndex)
+            // Eğer hiç başlamadıysa baştan, devam ediyorsa kaldığı yerden
+            let startAt = self.paragraphs.isEmpty ? 0 : paragraphIndex
+            speak(paragraphs: paragraphs, language: language, speed: speed, startAt: startAt)
         }
     }
 
@@ -73,29 +64,39 @@ final class TTSService: NSObject {
             return
         }
         currentParagraphIndex = paragraphIndex
+
         let utterance = AVSpeechUtterance(string: paragraphs[paragraphIndex])
-        utterance.voice = AVSpeechSynthesisVoice(language: language.ttsCode)
+
+        // Sesi bul, yoksa default kullan
+        if let voice = AVSpeechSynthesisVoice(language: language.ttsCode) {
+            utterance.voice = voice
+        }
         utterance.rate = max(AVSpeechUtteranceMinimumSpeechRate,
                              min(AVSpeechUtteranceMaximumSpeechRate, speed))
         utterance.pitchMultiplier = 1.1
-        utterance.postUtteranceDelay = 0.4
+        utterance.postUtteranceDelay = 0.3
+
         synthesizer.speak(utterance)
         isPlaying = true
     }
 }
 
-// Separate delegate class to avoid @Observable + NSObject conflict
+// MARK: - Delegate (NSObject'ten ayrı tutuldu)
 final class TTSDelegate: NSObject, AVSpeechSynthesizerDelegate {
     weak var owner: TTSService?
+
     init(owner: TTSService) { self.owner = owner }
 
     func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer,
                            willSpeakRangeOfSpeechString characterRange: NSRange,
                            utterance: AVSpeechUtterance) {
-        DispatchQueue.main.async { self.owner?.currentWordRange = characterRange }
+        DispatchQueue.main.async {
+            self.owner?.currentWordRange = characterRange
+        }
     }
 
-    func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didFinish utterance: AVSpeechUtterance) {
+    func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer,
+                           didFinish utterance: AVSpeechUtterance) {
         DispatchQueue.main.async {
             guard let svc = self.owner else { return }
             svc.paragraphIndex += 1
@@ -105,11 +106,18 @@ final class TTSDelegate: NSObject, AVSpeechSynthesizerDelegate {
         }
     }
 
-    func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didPause utterance: AVSpeechUtterance) {
+    func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer,
+                           didPause utterance: AVSpeechUtterance) {
         DispatchQueue.main.async { self.owner?.isPlaying = false }
     }
 
-    func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didContinue utterance: AVSpeechUtterance) {
+    func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer,
+                           didContinue utterance: AVSpeechUtterance) {
         DispatchQueue.main.async { self.owner?.isPlaying = true }
+    }
+
+    func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer,
+                           didCancel utterance: AVSpeechUtterance) {
+        DispatchQueue.main.async { self.owner?.isPlaying = false }
     }
 }
