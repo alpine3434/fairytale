@@ -109,7 +109,7 @@ extension Book {
                 "Kurt büyüanne kılığına girdi. Kız eve gelince büyüannenin çok tuhaf göründüğünü fark etti — büyük gözler, büyük kulaklar, büyük dişler! Kurt onu yemek için fırladı.",
                 "Yakındaki cesur bir oduncu kızın çığlığını duydu ve içeri koşarak kurdu korkuttu. Büyüanne kurtarıldı, kız da yabancılarla konuşmamayı öğrendi."
              ],
-             coverEmoji: "🐺", coverColorHex: "FF6B6B", coverImageName: nil, category: .fairyTale, isFree: true, readingTimeMinutes: 4),
+             coverEmoji: "🐺", coverColorHex: "FF6B6B", coverImageName: "cover_redridinghood", category: .fairyTale, isFree: true, readingTimeMinutes: 4),
 
         Book(id: UUID(), titleEN: "Cinderella", titleTR: "Külkedisi",
              contentEN: [
@@ -169,7 +169,7 @@ extension Book {
                 "Jack üç kez içeri gizlice girdi: bir torba altın, altın yumurtlayan bir tavuk ve sihirli bir arp çaldı. Her seferinde dev 'Dım dım dım!' diye bağırarak peşine düştü.",
                 "Son kaçışta Jack aşağı kaydı ve sırığı baltayla kesti. Dev düştü ve bir daha görünmedi. Jack ve annesi hazineleriyle mutlu yaşadı."
              ],
-             coverEmoji: "🌱", coverColorHex: "2ECC71", coverImageName: nil, category: .fairyTale, isFree: true, readingTimeMinutes: 4),
+             coverEmoji: "🌱", coverColorHex: "2ECC71", coverImageName: "cover_jackbeanstalk", category: .fairyTale, isFree: true, readingTimeMinutes: 4),
 
         Book(id: UUID(), titleEN: "Goldilocks and the Three Bears", titleTR: "Altın Saçlı Kız ve Üç Ayı",
              contentEN: [
@@ -184,7 +184,7 @@ extension Book {
                 "Koltuklara oturdu — çok büyük, çok büyük, tam uygun! Ama küçük koltuğu kırdı. Üstte yatakları denedi — çok sert, çok yumuşak, tam uygun! Derin uykuya daldı.",
                 "Ayılar eve döndü, lapalarının yendiğini ve koltuklarının karıştırıldığını gördü. Yavru ayı Altın Saçlı'yı kendi yatağında uyurken buldu. Kız uyandı, çığlık attı ve bir daha dönmemek üzere kaçtı."
              ],
-             coverEmoji: "🐻", coverColorHex: "D4A574", coverImageName: nil, category: .fairyTale, isFree: true, readingTimeMinutes: 4),
+             coverEmoji: "🐻", coverColorHex: "D4A574", coverImageName: "cover_goldilocks", category: .fairyTale, isFree: true, readingTimeMinutes: 4),
 
         Book(id: UUID(), titleEN: "The Ugly Duckling", titleTR: "Çirkin Ördek Yavrusu",
              contentEN: [
@@ -259,7 +259,7 @@ extension Book {
                 "Belle hasta babasını ziyarete izin verildi. Ama kıskanç kız kardeşleri dönüşünü geciktirdi. Koşarak geri döndüğünde Canavarı özlemden ölmek üzere buldu.",
                 "Gözyaşlarıyla sevgisini itiraf etti. Büyü bozuldu: Canavar uzun süre önce lanetlenmiş olan nazik bir prense dönüştü. Evlendiler ve birlikte mutlu yaşadılar."
              ],
-             coverEmoji: "🌹", coverColorHex: "E91E8C", coverImageName: nil, category: .fairyTale, isFree: true, readingTimeMinutes: 5),
+             coverEmoji: "🌹", coverColorHex: "E91E8C", coverImageName: "cover_beautybeast", category: .fairyTale, isFree: true, readingTimeMinutes: 5),
 
         Book(id: UUID(), titleEN: "Puss in Boots", titleTR: "Çizmeli Kedi",
              contentEN: [
@@ -274,7 +274,7 @@ extension Book {
                 "Kedi canavarı fareye dönüşmeye davet etti. Ahmak canavar dönüştü ve kedi onu hemen yedi. Artık topraklar Markis'in olmuştu.",
                 "Kral çok etkilendi ve kızını ona verdi. Değirmencinin oğlu soylu biri oldu, zeki kedi de çizmelerini gururla giyerek lord gibi yaşadı."
              ],
-             coverEmoji: "🐱", coverColorHex: "E67E22", coverImageName: nil, category: .fairyTale, isFree: true, readingTimeMinutes: 4),
+             coverEmoji: "🐱", coverColorHex: "E67E22", coverImageName: "cover_pussinboots", category: .fairyTale, isFree: true, readingTimeMinutes: 4),
 
         Book(id: UUID(), titleEN: "The Frog Prince", titleTR: "Kurbağa Prens",
              contentEN: [
@@ -289,7 +289,7 @@ extension Book {
                 "Prenses isteksizce kurbağanın tabağından yemesine ve odasında uyumasına izin verdi. Sinirinden kurbağayı duvara fırlattı.",
                 "O anda kurbağa bir cadı tarafından lanetlenmiş yakışıklı bir prense dönüştü. Prenses özür diledi ve en iyi arkadaş oldular; zamanla evlendiler."
              ],
-             coverEmoji: "🐸", coverColorHex: "27AE60", coverImageName: nil, category: .fairyTale, isFree: true, readingTimeMinutes: 4),
+             coverEmoji: "🐸", coverColorHex: "27AE60", coverImageName: "cover_frogprince", category: .fairyTale, isFree: true, readingTimeMinutes: 4),
 
         Book(id: UUID(), titleEN: "The Emperor's New Clothes", titleTR: "İmparatorun Yeni Elbiseleri",
              contentEN: [
@@ -304,7 +304,7 @@ extension Book {
                 "İmparatorun yeni kıyafetini büyük bir geçit töreniyle giyeceği gün geldi. Dolandırıcılar onu sanki giydirirmiş gibi yaptı; o da soyunmuş halde halkın karşısına çıktı.",
                 "Herkes harika elbiseleri alkışladı — ta ki küçük bir çocuk 'Ama üstünde hiçbir şey yok!' diye bağırana kadar. İmparator gerçeği anladı ve kibiri hakkında bir ders alarak gururla yürümeye devam etti."
              ],
-             coverEmoji: "👑", coverColorHex: "9B59B6", coverImageName: nil, category: .fairyTale, isFree: true, readingTimeMinutes: 4),
+             coverEmoji: "👑", coverColorHex: "9B59B6", coverImageName: "cover_emperornewclothes", category: .fairyTale, isFree: true, readingTimeMinutes: 4),
 
         // ── PAID (16-58) ─────────────────────────────────────────────
         Book(id: UUID(), titleEN: "Rumpelstiltskin", titleTR: "Rumpelstiltskin",
@@ -335,7 +335,7 @@ extension Book {
                 "Tom pek çok macera yaşadı — inek yuttu, bir karga taşıdı ve devasa bir balık yuttu — ama her zaman ona zarar vermeye çalışanları geçti.",
                 "Cesareti krallık sarayına ulaştı ve Tom bir saray şövalyesi yapıldı. Küçük çocuk, cesaretin ve hızlı düşüncenin boyuttan çok daha önemli olduğunu kanıtladı."
              ],
-             coverEmoji: "👍", coverColorHex: "3498DB", coverImageName: nil, category: .fairyTale, isFree: false, readingTimeMinutes: 4),
+             coverEmoji: "👍", coverColorHex: "3498DB", coverImageName: "cover_tomthumb", category: .fairyTale, isFree: false, readingTimeMinutes: 4),
 
         Book(id: UUID(), titleEN: "The Snow Queen", titleTR: "Kar Kraliçesi",
              contentEN: [
@@ -380,7 +380,7 @@ extension Book {
                 "Her gece şafağa kadar on iki prensin dans ettiği yeraltı krallığına giden gizli bir geçitten onları izledi.",
                 "Üçüncü gecede kanıt olarak bir dal kırdı. Sırrı krala açıkladı. Büyü bozuldu ve en büyük prensesi kendine gelin olarak seçti."
              ],
-             coverEmoji: "💃", coverColorHex: "9B59B6", coverImageName: nil, category: .fairyTale, isFree: false, readingTimeMinutes: 5),
+             coverEmoji: "💃", coverColorHex: "9B59B6", coverImageName: "cover_twelvedancing", category: .fairyTale, isFree: false, readingTimeMinutes: 5),
 
         Book(id: UUID(), titleEN: "The Brave Little Tailor", titleTR: "Cesur Küçük Terzi",
              contentEN: [
@@ -395,7 +395,7 @@ extension Book {
                 "Devleri birbirleriyle savaştırarak kandırdı. Tekboynuzun boynuzunu ağaca sabitledi. Domuzu bir şapele kovalayıp içeri kilitledi.",
                 "Son derece etkilenen kral ona kızını verdi. Terzi bir prens oldu ve keskin aklın kaba kuvvetten daha güçlü olduğunu kanıtladı."
              ],
-             coverEmoji: "✂️", coverColorHex: "E74C3C", coverImageName: nil, category: .fairyTale, isFree: false, readingTimeMinutes: 5),
+             coverEmoji: "✂️", coverColorHex: "E74C3C", coverImageName: "cover_bravetailor", category: .fairyTale, isFree: false, readingTimeMinutes: 5),
 
         Book(id: UUID(), titleEN: "Mother Holle", titleTR: "Holle Ana",
              contentEN: [
@@ -410,7 +410,7 @@ extension Book {
                 "Tembel kız kardeş aynı ödülü umarak kuyuya atladı. Ama Holle Ana'nın yanında tembel ve dikkatsizdi.",
                 "Dönerken altın yerine üzerine kapkara zift döküldü. Çalışkan kızın iyiliği ödüllendirilirken tembelliğin kendi cezasını getirdiği görüldü."
              ],
-             coverEmoji: "❄️", coverColorHex: "BDC3C7", coverImageName: nil, category: .fairyTale, isFree: false, readingTimeMinutes: 4),
+             coverEmoji: "❄️", coverColorHex: "BDC3C7", coverImageName: "cover_motherholle", category: .fairyTale, isFree: false, readingTimeMinutes: 4),
 
         Book(id: UUID(), titleEN: "The Golden Bird", titleTR: "Altın Kuş",
              contentEN: [
@@ -425,7 +425,7 @@ extension Book {
                 "Tilkinin yardımıyla altın kuşu, altın atı buldu ve güzel bir prensesi kurtardı.",
                 "Kıskanç kardeşleri onu ihanet etti ama tilki onu bir kez daha kurtardı. Sonunda prens kuş, at, prenses ve kardeşlerini ihanetleri için cezalandırdı."
              ],
-             coverEmoji: "🦅", coverColorHex: "F1C40F", coverImageName: nil, category: .fairyTale, isFree: false, readingTimeMinutes: 5),
+             coverEmoji: "🦅", coverColorHex: "F1C40F", coverImageName: "cover_goldbird", category: .fairyTale, isFree: false, readingTimeMinutes: 5),
 
         Book(id: UUID(), titleEN: "Ali Baba and the Forty Thieves", titleTR: "Ali Baba ve Kırk Haramiler",
              contentEN: [
@@ -440,7 +440,7 @@ extension Book {
                 "Haramiler Ali Baba'yı bulmak ve öldürmek için pek çok numara denedi. Ama zeki cariye Morgiana her zaman onları geçti, hatta kılık değiştirmiş harami reisini bile öldürdü.",
                 "Morgiana'nın cesareti Ali Baba'nın hayatını defalarca kurtardı. O da onu özgürlükle ve ailesine evlilikle ödüllendirdi. Sonsuza dek güvenli ve müreffeh yaşadılar."
              ],
-             coverEmoji: "🏺", coverColorHex: "D4AC0D", coverImageName: nil, category: .adventure, isFree: false, readingTimeMinutes: 6),
+             coverEmoji: "🏺", coverColorHex: "D4AC0D", coverImageName: "cover_alibaba", category: .adventure, isFree: false, readingTimeMinutes: 6),
 
         Book(id: UUID(), titleEN: "Aladdin and the Magic Lamp", titleTR: "Aladdin ve Sihirli Lamba",
              contentEN: [
@@ -455,7 +455,7 @@ extension Book {
                 "Lambanın cini Aladdin'in dileklerini gerçekleştirdi — zenginlik, bir saray ve prensesin eli. Ama sihirbaz lambayı çalarak her şeyi götürdü.",
                 "Aladdin yüzük cini ile lambayı geri aldı, sihirbazı yendi ve her şeyi geri getirdi. Prensesle mutlu yaşadılar ve Aladdin bilgece hükmetti."
              ],
-             coverEmoji: "🪔", coverColorHex: "F39C12", coverImageName: nil, category: .adventure, isFree: false, readingTimeMinutes: 6),
+             coverEmoji: "🪔", coverColorHex: "F39C12", coverImageName: "cover_aladdin", category: .adventure, isFree: false, readingTimeMinutes: 6),
 
         Book(id: UUID(), titleEN: "Sinbad the Sailor", titleTR: "Denizci Sinbad",
              contentEN: [
@@ -485,7 +485,7 @@ extension Book {
                 "Yarı yolda tavşan çok önündeydi ve şekerleme yapmaya karar verdi. Bir ağacın altında derin uykuya daldı.",
                 "Kaplumbağa hiç durmadı. Bir yavaş adım bir adım daha, bitiş çizgisini geçti. Tavşan uyandı ve koştu ama çok geçti. Yavaş ve istikrarlı yarışı kazanır!"
              ],
-             coverEmoji: "🐢", coverColorHex: "2ECC71", coverImageName: nil, category: .fable, isFree: false, readingTimeMinutes: 3),
+             coverEmoji: "🐢", coverColorHex: "2ECC71", coverImageName: "cover_tortoisehare", category: .fable, isFree: false, readingTimeMinutes: 3),
 
         Book(id: UUID(), titleEN: "The Fox and the Crow", titleTR: "Tilki ve Karga",
              contentEN: [
@@ -500,7 +500,7 @@ extension Book {
                 "Pohpohlanan ahmak karga, şarkı söylemek için gagasını sonuna kadar açtı. Peynir dümdüz aşağı düştü ve tilki onu kapmak için atladı.",
                 "Peyniri yerken kaçarken tilki geri bağırdı, 'Tek istediğim buydu, aziz Karga. Seni pohpohlayanlardan sakın — karşılığında bir şey isteyebilirler!'"
              ],
-             coverEmoji: "🦊", coverColorHex: "E67E22", coverImageName: nil, category: .fable, isFree: false, readingTimeMinutes: 3),
+             coverEmoji: "🦊", coverColorHex: "E67E22", coverImageName: "cover_foxcrow", category: .fable, isFree: false, readingTimeMinutes: 3),
 
         Book(id: UUID(), titleEN: "The Lion and the Mouse", titleTR: "Aslan ve Fare",
              contentEN: [
@@ -515,7 +515,7 @@ extension Book {
                 "Günler sonra aslan bir avcının ağında mahsur kaldı, çaresizce kükrüyordu. Küçük fare onu duydu ve koştu.",
                 "Keskin küçük dişleriyle aslan özgür olana kadar ipleri kemirdi. 'Benimle alay ettin,' dedi fare, 'ama küçük dostlar da büyük dost olabilir.'"
              ],
-             coverEmoji: "🦁", coverColorHex: "F39C12", coverImageName: nil, category: .fable, isFree: false, readingTimeMinutes: 3),
+             coverEmoji: "🦁", coverColorHex: "F39C12", coverImageName: "cover_lionmouse", category: .fable, isFree: false, readingTimeMinutes: 3),
 
         Book(id: UUID(), titleEN: "The Ant and the Grasshopper", titleTR: "Karınca ve Çekirge",
              contentEN: [
@@ -530,7 +530,7 @@ extension Book {
                 "Kış gelince toprak donmuş ve yiyecek yoktu. Çekirge soğuk ve açtı. Karıncanın kapısına vurdu ve yiyecek dilendi.",
                 "Karınca ona bakarak dedi, 'Sen oynarken ben bütün yaz çalıştım. Şimdi bende yiyecek var, sende yok.' İyi günlerde ihtiyaç günleri için hazırlamak en iyisidir."
              ],
-             coverEmoji: "🐜", coverColorHex: "8B4513", coverImageName: nil, category: .fable, isFree: false, readingTimeMinutes: 3),
+             coverEmoji: "🐜", coverColorHex: "8B4513", coverImageName: "cover_antgrasshopper", category: .fable, isFree: false, readingTimeMinutes: 3),
 
         Book(id: UUID(), titleEN: "The Boy Who Cried Wolf", titleTR: "Kurt Diye Bağıran Çoban",
              contentEN: [
@@ -545,7 +545,7 @@ extension Book {
                 "Ertesi gün aynı numarayı oynadı ve köylüler yeniden koştular. İki kez kandırılmaktan çok kızgındılar.",
                 "Sonra gerçek bir kurt geldi. Çocuk 'Kurt! Kurt!' diye bağırdı ama kimse gelmedi. Kurt koyunları dağıttı. Çocuk gerçeği söylese bile yalancıya kimsenin inanmadığını öğrendi."
              ],
-             coverEmoji: "🐑", coverColorHex: "95A5A6", coverImageName: nil, category: .fable, isFree: false, readingTimeMinutes: 3),
+             coverEmoji: "🐑", coverColorHex: "95A5A6", coverImageName: "cover_boycriedwolf", category: .fable, isFree: false, readingTimeMinutes: 3),
 
         Book(id: UUID(), titleEN: "The Fox and the Grapes", titleTR: "Tilki ve Üzümler",
              contentEN: [
@@ -560,7 +560,7 @@ extension Book {
                 "Pek çok başarısız denemeden sonra tilki yorgun bir şekilde oturdu ve üzümlere baktı. Hâlâ tam ulaşamayacağı bir yerdeydiler.",
                 "'O üzümler zaten ekşiydi!' dedi kendine ve burnu havada uzaklaştı. Sahip olamadıklarını küçümsemek kolaydır."
              ],
-             coverEmoji: "🍇", coverColorHex: "8E44AD", coverImageName: nil, category: .fable, isFree: false, readingTimeMinutes: 2),
+             coverEmoji: "🍇", coverColorHex: "8E44AD", coverImageName: "cover_foxgrapes", category: .fable, isFree: false, readingTimeMinutes: 2),
 
         Book(id: UUID(), titleEN: "The Goose That Laid the Golden Eggs", titleTR: "Altın Yumurtlayan Kaz",
              contentEN: [
@@ -575,7 +575,7 @@ extension Book {
                 "'Kazın içi altın dolu olmalı!' dedi çiftçi açgözlüce. Tüm altını bir seferde almak için kazı kesmeye karar verdiler.",
                 "Ama kazın içinde sıradan bir kazdan başka bir şey yoktu. Altın kazlarını öldürmüşlerdi. Geriye hiçbir şey kalmadı. Açgözlülük, bekleyemediği şeyi yok eder."
              ],
-             coverEmoji: "🥚", coverColorHex: "F1C40F", coverImageName: nil, category: .fable, isFree: false, readingTimeMinutes: 3),
+             coverEmoji: "🥚", coverColorHex: "F1C40F", coverImageName: "cover_goldengoose", category: .fable, isFree: false, readingTimeMinutes: 3),
 
         Book(id: UUID(), titleEN: "The Wind and the Sun", titleTR: "Rüzgar ve Güneş",
              contentEN: [
@@ -590,7 +590,7 @@ extension Book {
                 "Sonra Güneş sırasını aldı. Yolcuya nazikçe ve sıcakça parladı. Adam sıcaklığı hissetti ve rahatlayarak gülümsedi.",
                 "Çok geçmeden yolcu çok ısındı ve paltosunu mutlu bir şekilde çıkardı. Güneş kazanmıştı. Yumuşaklık ve sıcaklık, kuvvet ve öfkenin yapabileceğinden çok daha fazlasını başarır."
              ],
-             coverEmoji: "☀️", coverColorHex: "F39C12", coverImageName: nil, category: .fable, isFree: false, readingTimeMinutes: 3),
+             coverEmoji: "☀️", coverColorHex: "F39C12", coverImageName: "cover_windsun", category: .fable, isFree: false, readingTimeMinutes: 3),
 
         Book(id: UUID(), titleEN: "The Crow and the Pitcher", titleTR: "Karga ve Testi",
              contentEN: [
@@ -605,7 +605,7 @@ extension Book {
                 "Teker teker çakıl taşları alıp testiye attı. Yavaş yavaş su seviyesi yükseldi ve yükseldi.",
                 "Sonunda su karganın içebileceği kadar yükselmişti. Tatmin olmuş bir ganıltıyla susuzluğunu giderdi. İhtiyaç icadın anasıdır — pes etmeden önce düşün!"
              ],
-             coverEmoji: "🪨", coverColorHex: "7F8C8D", coverImageName: nil, category: .fable, isFree: false, readingTimeMinutes: 3),
+             coverEmoji: "🪨", coverColorHex: "7F8C8D", coverImageName: "cover_crowpitcher", category: .fable, isFree: false, readingTimeMinutes: 3),
 
         Book(id: UUID(), titleEN: "The Dog and His Reflection", titleTR: "Köpek ve Yansıması",
              contentEN: [
@@ -620,7 +620,7 @@ extension Book {
                 "Daha büyük kemik için açgözlüce yansımaya hücum etti. Tabii ağzını açtığı an kendi kemiği suya düştü ve battı.",
                 "Artık hiç kemiği yoktu. Başkalarının sahip olduğunu istemek, zaten sahip olduğunu kaybetmene neden olabilir. Açgözlülük asla işe yaramaz."
              ],
-             coverEmoji: "🐕", coverColorHex: "CD853F", coverImageName: nil, category: .fable, isFree: false, readingTimeMinutes: 3),
+             coverEmoji: "🐕", coverColorHex: "CD853F", coverImageName: "cover_dogbone", category: .fable, isFree: false, readingTimeMinutes: 3),
 
         Book(id: UUID(), titleEN: "Nasreddin Hodja: The Cauldron", titleTR: "Nasreddin Hoca: Kazan",
              contentEN: [
@@ -725,7 +725,7 @@ extension Book {
                 "Tavşan yakılmak üzere bir çuvala konuldu. Bahçede yalnız, gözünden gerçek bir gözyaşı düştü — ve o gözyaşından bir çiçek büyüdü.",
                 "Bir peri belirdi ve ona sevgisinin onu sonunda Gerçek yaptığını söyledi. Onu gerçek bir tavşana dönüştürdü. İlkbaharda çocuk eski oyuncağını hatırlatan bir tavşan gördü ve ikisi de mutluydu."
              ],
-             coverEmoji: "🐰", coverColorHex: "F4A460", coverImageName: nil, category: .classic, isFree: false, readingTimeMinutes: 5),
+             coverEmoji: "🐰", coverColorHex: "F4A460", coverImageName: "cover_velveteen", category: .classic, isFree: false, readingTimeMinutes: 5),
 
         Book(id: UUID(), titleEN: "The Little Prince", titleTR: "Küçük Prens",
              contentEN: [
@@ -785,7 +785,7 @@ extension Book {
                 "Kaptan Çengel çocukları kaçırdı. Peter Pan, gemide çarpıcı bir kılıç düellosunda Çengel ile savaştı ve kaptanı tik tak tik tak eden timsahın ağzına gönderdi.",
                 "Çocuklar eve döndü. Wendy büyüdü; çocukları ve torunları da öyle — ama Peter Pan hiç yaşlanmadı. Hâlâ inanan çocukları ziyaret ediyor, sonsuza kadar genç ve özgür."
              ],
-             coverEmoji: "🧚", coverColorHex: "27AE60", coverImageName: nil, category: .classic, isFree: false, readingTimeMinutes: 5),
+             coverEmoji: "🧚", coverColorHex: "27AE60", coverImageName: "cover_peterpan", category: .classic, isFree: false, readingTimeMinutes: 5),
 
         Book(id: UUID(), titleEN: "Winnie the Pooh", titleTR: "Winnie the Pooh",
              contentEN: [
@@ -830,7 +830,7 @@ extension Book {
                 "En iyi arkadaşı hayatı boyunca sert muamele görmüş Zencefil adında bir attı. Güzel ona umut vermeye çalıştı ama sert muamele onun ruhunu kırmıştı.",
                 "Pek çok güçlükten sonra Güzel sonunda değerini tanıyan nazik sahipler tarafından satın alındı. Son yıllarını yeşil bir çayırda, huzurlu ve sevilerek geçirdi; hayvanlara nezaket göstermenin önemini anlatan hikayesini paylaştı."
              ],
-             coverEmoji: "🐎", coverColorHex: "2C3E50", coverImageName: nil, category: .classic, isFree: false, readingTimeMinutes: 5),
+             coverEmoji: "🐎", coverColorHex: "2C3E50", coverImageName: "cover_blackbeauty", category: .classic, isFree: false, readingTimeMinutes: 5),
 
         Book(id: UUID(), titleEN: "The Secret Garden", titleTR: "Gizli Bahçe",
              contentEN: [
@@ -845,7 +845,7 @@ extension Book {
                 "Yerel Dickon adında bir çocukla gizlice bahçeyi yetiştirmeye başladı. Malikanenin içinde ayrıca yatağa bağlı ve öleceğine inanan kuzeni Colin'i de keşfetti.",
                 "Bahçede çalışmak hepsini canlandırdı. Colin yürüyebileceğini ve koşabileceğini keşfetti. Bahçe, çocuklar ve hatta kasvetli malikane yeni bir yaşam ve sevinçle çiçek açtı."
              ],
-             coverEmoji: "🌷", coverColorHex: "27AE60", coverImageName: nil, category: .classic, isFree: false, readingTimeMinutes: 5),
+             coverEmoji: "🌷", coverColorHex: "27AE60", coverImageName: "cover_secretgarden", category: .classic, isFree: false, readingTimeMinutes: 5),
 
         Book(id: UUID(), titleEN: "Gulliver's Travels", titleTR: "Gulliver'in Gezileri",
              contentEN: [
@@ -860,7 +860,7 @@ extension Book {
                 "Daha sonra Gulliver her şeyin devasa ve kendisinin küçük olduğu Brobdingnag'ı ziyaret etti. Çiftçiler ve devler onu garip küçük bir böcek gibi gözlemledi.",
                 "Seyahatleri ona boyutun bilgeliği belirlemediğini ve her yerdeki insanların — büyük ya da küçük — en saçma şeyler üzerine tartıştığını öğretti. Sıradan hayata şükür duyarak eve döndü."
              ],
-             coverEmoji: "🔭", coverColorHex: "2980B9", coverImageName: nil, category: .classic, isFree: false, readingTimeMinutes: 5),
+             coverEmoji: "🔭", coverColorHex: "2980B9", coverImageName: "cover_gulliver", category: .classic, isFree: false, readingTimeMinutes: 5),
 
         Book(id: UUID(), titleEN: "The Water of Life", titleTR: "Hayat Suyu",
              contentEN: [
@@ -875,7 +875,7 @@ extension Book {
                 "En küçük oğul kaleye girdi, uyuyan bir prensesi öptü ve Hayat Suyu'nu buldu. Kardeşlerinin geçitten kurtulmasına yardım etti, ama onlar ona ihanet ederek suyu çaldılar ve onu geride bıraktılar.",
                 "Gerçek krallık sarayında ortaya çıktı. Kral, en küçük oğlunun bulduğu gerçek suyla iyileşti. Kardeşler cezalandırıldı ve en küçük oğul uyandırdığı prensesle evlendi."
              ],
-             coverEmoji: "💧", coverColorHex: "3498DB", coverImageName: nil, category: .fairyTale, isFree: false, readingTimeMinutes: 5),
+             coverEmoji: "💧", coverColorHex: "3498DB", coverImageName: "cover_wateroflife", category: .fairyTale, isFree: false, readingTimeMinutes: 5),
 
         Book(id: UUID(), titleEN: "The Six Swans", titleTR: "Altı Kuğu",
              contentEN: [
@@ -890,6 +890,6 @@ extension Book {
                 "Onu bulan bir kral evlendi ama konuşamıyordu. Kötü annesi kocasını onun cadı olduğuna inandırdı. Yanmak üzere mahkûm edildi ama beş gömleği bitirmişti.",
                 "İnfaz gününde gömlekleri kuğuların üzerine fırlattı. Kardeşleri yeniden insan oldu — en küçüğünün bir kolu kanat olarak kaldı. Sonunda konuştu ve her şey açıklandı. Mutlu yaşadılar."
              ],
-             coverEmoji: "🦢", coverColorHex: "AED6F1", coverImageName: nil, category: .fairyTale, isFree: false, readingTimeMinutes: 5),
+             coverEmoji: "🦢", coverColorHex: "AED6F1", coverImageName: "cover_sixswans", category: .fairyTale, isFree: false, readingTimeMinutes: 5),
     ]
 }

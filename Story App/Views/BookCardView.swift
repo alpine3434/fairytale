@@ -11,25 +11,25 @@ struct BookCardView: View {
     var body: some View {
         ZStack(alignment: .topTrailing) {
             VStack(spacing: 0) {
-                // Cover
+                // Kapak
                 ZStack(alignment: .bottomTrailing) {
                     coverImage
                         .aspectRatio(2/3, contentMode: .fit)
                         .clipShape(RoundedRectangle(cornerRadius: 12))
                         .shadow(color: book.coverColor.opacity(0.4), radius: 8, x: 0, y: 4)
 
-                    // Kilit ikonu
+                    // Kilit
                     if isLocked {
-                        ZStack {
-                            Color.black.opacity(0.45)
-                                .clipShape(RoundedRectangle(cornerRadius: 12))
-                            Image(systemName: "lock.fill")
-                                .font(.system(size: 24))
-                                .foregroundColor(.white)
-                        }
+                        RoundedRectangle(cornerRadius: 12)
+                            .fill(Color.black.opacity(0.45))
+                            .overlay(
+                                Image(systemName: "lock.fill")
+                                    .font(.system(size: 24))
+                                    .foregroundColor(.white)
+                            )
                     }
 
-                    // Okundu işareti
+                    // Okundu
                     if progress.isRead(book) {
                         Image(systemName: "checkmark.circle.fill")
                             .foregroundColor(.green)
@@ -71,16 +71,22 @@ struct BookCardView: View {
         }
     }
 
-    // Gerçek kapak varsa onu, yoksa emoji+renk
     @ViewBuilder
     private var coverImage: some View {
-        if let imageName = book.coverImageName, UIImage(named: imageName) != nil {
+        if let imageName = book.coverImageName {
             Image(imageName)
                 .resizable()
                 .scaledToFill()
         } else {
             ZStack {
-                book.coverColor.gradient
+                Rectangle()
+                    .fill(
+                        LinearGradient(
+                            colors: [book.coverColor, book.coverColor.opacity(0.7)],
+                            startPoint: .topLeading,
+                            endPoint: .bottomTrailing
+                        )
+                    )
                 Text(book.coverEmoji)
                     .font(.system(size: 44))
             }

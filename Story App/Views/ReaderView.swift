@@ -173,12 +173,12 @@ struct ReaderView: View {
 
                 // Play/Pause
                 Button {
-                    tts.togglePlayPause(
+                    tts.togglePlay(
                         paragraphs: book.content(in: settings.language),
                         language: settings.language,
-                        speed: settings.readingSpeed
+                        speed: settings.readingSpeed,
+                        currentPage: currentPage
                     )
-                    if !tts.isPlaying { }
                 } label: {
                     ZStack {
                         Circle()
@@ -246,7 +246,14 @@ struct ReaderView: View {
             return
         }
         withAnimation(.easeInOut(duration: 0.2)) { currentPage += 1 }
-        if tts.isPlaying { tts.currentParagraphIndex = currentPage }
+        if tts.isPlaying {
+            tts.play(
+                paragraphs: book.content(in: settings.language),
+                language: settings.language,
+                speed: settings.readingSpeed,
+                from: currentPage
+            )
+        }
     }
 
     private func goToPrevPage() {
