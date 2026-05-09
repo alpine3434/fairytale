@@ -1,0 +1,102 @@
+@import "tailwindcss";
+
+@theme {
+  --color-navy-950: #050510;
+  --color-navy-900: #0a0a1a;
+  --color-navy-800: #0f1632;
+  --color-navy-700: #16213e;
+  --color-navy-600: #1a2a5e;
+  --color-card: #111827;
+  --color-gold: #FFD700;
+  --color-gold-light: #FFF8C0;
+  --color-gold-dark: #B8860B;
+  --color-accent-pink: #FF6B9D;
+  --color-accent-teal: #4ECDC4;
+  --color-accent-orange: #FF8C42;
+  --color-accent-purple: #9B59B6;
+  --color-accent-red: #E74C3C;
+  --font-display: 'Segoe UI', system-ui, -apple-system, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #050510;
+  color: #fff;
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  overflow-x: hidden;
+}
+
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #050510; }
+::-webkit-scrollbar-thumb { background: rgba(255,215,0,0.35); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(255,215,0,0.65); }
+
+.gold-gradient {
+  background: linear-gradient(135deg, #FFD700 0%, #FFA500 50%, #FFD700 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shine 4s linear infinite;
+}
+
+@keyframes shine {
+  0%   { background-position: 0% center; }
+  100% { background-position: 200% center; }
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 215, 0, 0.12);
+  border-radius: 1.25rem;
+  transition: all 0.35s ease;
+}
+
+.glass-card:hover {
+  background: rgba(255, 255, 255, 0.07);
+  border-color: rgba(255, 215, 0, 0.32);
+  transform: translateY(-5px);
+  box-shadow: 0 24px 60px rgba(255, 215, 0, 0.08);
+}
+
+.appstore-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  background: rgba(0,0,0,0.6);
+  border: 1.5px solid rgba(255,255,255,0.18);
+  border-radius: 14px;
+  padding: 13px 26px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.appstore-btn:hover {
+  border-color: rgba(255,215,0,0.55);
+  box-shadow: 0 0 36px rgba(255,215,0,0.18);
+  transform: scale(1.04);
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px) rotate(-1deg); }
+  50%       { transform: translateY(-14px) rotate(1deg); }
+}
+
+.float-anim { animation: float 5s ease-in-out infinite; }
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 20px rgba(255,215,0,0.3); }
+  50%       { box-shadow: 0 0 50px rgba(255,215,0,0.6), 0 0 80px rgba(255,215,0,0.2); }
+}
+
+.pulse-gold { animation: pulse-glow 3s ease-in-out infinite; }
+
+@keyframes twinkle {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: 0.3; transform: scale(0.5); }
+}
